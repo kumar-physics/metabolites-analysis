@@ -1,0 +1,81 @@
+---
+title: "Analysis"
+output: html_document
+---
+
+
+
+## Metabolite analysis
+
+```{r echo =FALSE,message=FALSE, warning=FALSE}
+library(reshape2)
+library(ggplot2)
+library(plotly)
+library(matrixStats)
+#setwd('/Users/kumaran/linuxshare/con_analysis/')
+m<-read.csv('con2.csv',header = T,check.names = FALSE)
+row.names(m)<-m$Name
+m[1]<-NULL
+b6lean<-m[c(1,2,3,4,5,6,7),]
+b6ob<-m[c(8,9,10,11,12,13),]
+b6<-m[c(1,2,3,4,5,6,7,8,9,10,11,12,13),]
+btbrlean<-m[c(14,15,16,17,18),]
+btbrob<-m[c(19,20,21,22,23,24),]
+btbr<-m[c(14,15,16,17,18,19,20,21,22,23,24),]
+lean<-m[c(1,2,3,4,5,6,7,14,15,16,17,18),]
+obes<-m[c(8,9,10,11,12,13,19,20,21,22,23,24),]
+all<-m
+matrix_mean<-function(m,label){
+  m[row(m)==col(m)]<-0.0
+  mn<-as.data.frame(rowMeans(m))
+  colnames(mn)[1]="mean"
+  mn$metabolites=rownames(mn)
+  mn$sd<-rowSds(m)
+  rownames(mn)<-NULL
+  mn$dataset=label
+  return(mn)
+}
+
+compare_matrix_mean<-function(m1,m2){
+  mm<-merge(m1,m2,by=c('metabolites'))
+  mm$meandiff<-mm$mean.x-mm$mean.y
+  mm$dataset<-paste(mm$dataset.x,mm$dataset.y)
+  mmdat<-subset(mm,select=c("metabolites","meandiff","dataset"))
+  return(mmdat)
+}
+  
+
+allm<-round(cor(all),4)
+b6m<-round(cor(b6),4)
+btbrm<-round(cor(btbr),4)
+leanm<-round(cor(lean),4)
+obesm<-round(cor(obes),4)
+b6leanm<-round(cor(b6lean),4)
+b6obm<-round(cor(b6ob),4)
+btbrleanm<-round(cor(btbrlean),4)
+btbrobm<-round(cor(btbrob),4)
+```
+
+### Cross correlation method
+
+You can view the cross correlation matrices and cross correlation difference matrices for each gorup from the pull down menu on the top. 
+
+### Interpretation of results
+
+The second plot (mean correlation difference) on the result page give the information about metabolite activity. 
+
+For example : Mannitol
+
+* BTBR vs BRBR Lean -1.15 (strong signal)
+* BTBR Lean vs BRBR Obesity 1.03 (strong signal)
+* BRBR vs BRBR Obesity -0.13 (weak signal)
+
+Lese see what the Mean coorelation within each group
+
+* BTBR -0.34
+* BTBR Lean 0.81
+* BTBR Obesity -0.21
+
+The means Mannitol has good positive porrelation in BRBR Lean group, which means on average Minnitol concentration increases as rest of the metabolite concentration increases. This is not true in BRBR Obesity group. This can be easily verified by looling at the correlation matrix and comparison matrix(avilable from the pull down menu)
+
+

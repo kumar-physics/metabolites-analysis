@@ -1,0 +1,57 @@
+name: "Metabolite-analysis"
+navbar:
+  title: "Analysis"
+  href: index.html
+  left:
+    - text: "Cross-correlations"
+      menu:
+        - text: "All"
+          href: all.html
+        - text: "B6"
+          href: b6.html
+        - text: "BTBR"
+          href: btbr.html
+        - text: "Lean"
+          href: lean.html
+        - text: "Obesity"
+          href: obes.html
+        - text: "B6 Lean"
+          href: b6lean.html
+        - text: "B6 Obesity"
+          href: b6ob.html
+        - text: "BTBR Lean"
+          href: btbrlean.html
+        - text: "BTBR Obesity"
+          href: btbrob.html
+    - text: "Comparison"
+      menu:
+        - text: "All vs Lean"
+          href: allvslean.html
+        - text: "All vs Obesity"
+          href: allvsobes.html
+        - text: "All vs B6"
+          href: allvsb6.html
+        - text: "All vs BTBR"
+          href: allvsbtbr.html
+        - text: "B6 vs BTBR"
+          href: b6vsbtbr.html
+        - text: "Lean vs Obesity"
+          href: leanvsob.html
+        - text: "B6 vs B6 Lean"
+          href: b6vsb6lean.html
+        - text: "B6 vs B6 Obesity"
+          href: b6vsb6ob.html
+        - text: "B6 Lean vs B6 Obesity"
+          href: b6leanvsb6ob.html
+        - text: "BTBR vs BTBR Lean"
+          href: btbrvsbtbrlean.html
+        - text: "BTBR vs BTBR Obesity"
+          href: btbrvsbtbrob.html
+        - text: "BTBR Lean vs BTBR Obesity"
+          href: btbrleanvsbtbrob.html
+        - text: "B6 Lean vs BTBR Lean"
+          href: b6leanvsbtbrlean.html
+        - text: "B6 Obesity vs BTBR Obesity"
+          href: b6obvsbtbrob.html
+    - text: "Results"
+      href: results.html

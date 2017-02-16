@@ -1,0 +1,19 @@
+---
+title: "BTBR"
+output: html_document
+---
+
+
+
+```{r, fig.width=10, fig.height=8, eval=TRUE, echo=FALSE,message=FALSE, warning=FALSE}
+m1<-round(cor(btbr),4)
+m2<-melt(m1)
+plt<-ggplot2::ggplot(m2)+ggplot2::geom_tile(aes(x=Var1,y=Var2,fill=as.numeric(value)))+
+  ggplot2::scale_fill_gradient2(low = "blue", high = "red", mid = "white",
+                                midpoint = 0, limit = c(-1,1), space = "Lab",name="Correlation")+
+  ggplot2::theme(axis.text.x = element_text(angle = 90, hjust = 1,vjust = 0.5))+
+  ggplot2::xlab("")+ggplot2::ylab("")
+plt1<-plotly::ggplotly(plt)
+plt1
+```
+

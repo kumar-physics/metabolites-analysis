@@ -1,0 +1,72 @@
+---
+title: "Results"
+output: html_document
+---
+
+
+### Mean correlation
+
+This summarizes the different correlation matrices calculated from different datasets. Higher value of mean correlation means that metabolite has good correlation with rest of the metabolites. 
+
+
+```{r, fig.width=10, fig.height=8, eval=TRUE, echo=FALSE,message=FALSE, warning=FALSE}
+allm<-round(cor(all),4)
+df1<-matrix_mean(allm,'All')
+b6m<-round(cor(b6),4)
+df2<-matrix_mean(b6m,'B6')
+btbrm<-round(cor(btbr),4)
+df3<-matrix_mean(btbrm,'BTBR')
+leanm<-round(cor(lean),4)
+df4<-matrix_mean(leanm,'Lean')
+obesm<-round(cor(obes),4)
+df5<-matrix_mean(obesm,'Obesity')
+b6leanm<-round(cor(b6lean),4)
+df6<-matrix_mean(b6leanm,'B6 Lean')
+b6obm<-round(cor(b6ob),4)
+df7<-matrix_mean(b6obm,'B6 Obesity')
+btbrleanm<-round(cor(btbrlean),4)
+df8<-matrix_mean(btbrleanm,'BTBR Lean')
+btbrobm<-round(cor(btbrob),4)
+df9<-matrix_mean(btbrobm,'BTBT Obesity')
+df<-rbind(rbind(rbind(rbind(rbind(rbind(rbind(rbind(df1,df2),df3),df4),df5),df6),df7),df8),df9)
+plt<-ggplot(df,aes(x=metabolites,y=mean))+
+  geom_point(aes(color=dataset))+#geom_errorbar(aes(ymin=mean-sd,ymax=mean+sd,color=dataset))+
+  #geom_line(aes(group=dataset))+
+  ggtitle("Mean Correlation")+
+  ggplot2::theme(axis.text.x = element_text(angle = 90, hjust = 1,vjust = 0.5))
+plt1a<-plotly::ggplotly(plt)
+plt1a
+
+```
+
+### Mean correlation difference
+
+This is calculated from the difference between two correlation matrices. Each element in this matrix gives the correlation difference of metabolite pairs between two datasets. The mean value of each row (or) column will give the average correlation difference for a given metabolite. This what plotted below. Data points at both extream are the metabolites showing activity in one group but not in other.
+
+
+```{r, fig.width=10, fig.height=8, eval=TRUE, echo=FALSE,message=FALSE, warning=FALSE}
+df1<-matrix_mean(b6m-btbrm,"B6 vs BTBR")
+df2<-matrix_mean(leanm-obesm,"Lean vs Obesity ")
+df3<-matrix_mean(allm-b6m,"All vs B6")
+df4<-matrix_mean(allm-btbrm,"All vs BTBR")
+df5<-matrix_mean(allm-leanm,"All vs Lean")
+df6<-matrix_mean(allm-obesm,"All vs Obesity")
+df7<-matrix_mean(b6leanm-b6obm,"B6 Lean vs B6 Obesity")
+df8<-matrix_mean(b6m-b6leanm,"B6 vs B6 Lean")
+df9<-matrix_mean(b6m-b6obm,"B6 vs B6 Obesity")
+df10<-matrix_mean(btbrleanm-btbrobm,"BTBR Lean vs BTBR Obesity")
+df11<-matrix_mean(btbrm-btbrleanm,"BTBR vs BTBR Lean")
+df12<-matrix_mean(btbrm-btbrobm,"BTBR vs BTBR Obesity")
+df13<-matrix_mean(b6leanm-btbrleanm,"B6 Lean vs BTBR Lean")
+df14<-matrix_mean(b6obm-btbrobm,"B6 Obesity vs BTBR Obesity")
+df<-rbind(rbind(rbind(rbind(rbind(rbind(rbind(rbind(rbind(rbind(rbind(rbind(rbind(df1,df2),df3),df4),df5),df6),df7),df8),df9),df10),df11),df12),df13),df14)
+plt<-ggplot(df,aes(x=metabolites,y=mean))+
+  geom_point(aes(color=dataset))+#geom_errorbar(aes(ymin=mean-sd,ymax=mean+sd,color=dataset))+
+  #geom_line(aes(group=dataset))+
+  ggtitle("Mean Correlation difference")+
+  ggplot2::theme(axis.text.x = element_text(angle = 90, hjust = 1,vjust = 0.5))
+plt1<-plotly::ggplotly(plt)
+plt1
+
+```
+

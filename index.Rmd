@@ -44,6 +44,33 @@ compare_matrix_mean<-function(m1,m2){
   return(mmdat)
 }
   
+ratio_matix<-function(m,n){
+  df<-as.vector(t(m[c(n),]))
+  mm<-log(outer(df,df,"/"))
+  colnames(mm)<-colnames(m)
+  rownames(mm)<-colnames(m)
+  return(mm)
+}
+plt_matrix<-function(m){
+  m2<-melt(m)
+  plt<-ggplot2::ggplot(m2)+ggplot2::geom_tile(aes(x=Var1,y=Var2,fill=as.numeric(value)))+
+    ggplot2::scale_fill_gradient2(low = "blue", high = "red", mid = "white",
+                                  midpoint = 0, limit = c(min(m2$value),max(m2$value)), space = "Lab",name="Log Ratio")+
+    ggplot2::theme(axis.text.x = element_text(angle = 90, hjust = 1,vjust = 0.5))+
+    ggplot2::xlab("")+ggplot2::ylab("")
+  plt1<-plotly::ggplotly(plt)
+  return(plt1)
+}
+
+rb6l<-(ratio_matix(m,1)+ratio_matix(m,2)+ratio_matix(m,3)+ratio_matix(m,4)+ratio_matix(m,5)+ratio_matix(m,6)+ratio_matix(m,7))/7
+rb6o<-(ratio_matix(m,8)+ratio_matix(m,9)+ratio_matix(m,10)+ratio_matix(m,11)+ratio_matix(m,12)+ratio_matix(m,13))/6
+rbtbrl<-(ratio_matix(m,14)+ratio_matix(m,15)+ratio_matix(m,16)+ratio_matix(m,17)+ratio_matix(m,18))/5
+rbtbro<-(ratio_matix(m,19)+ratio_matix(m,20)+ratio_matix(m,21)+ratio_matix(m,22)+ratio_matix(m,23)+ratio_matix(m,24))/6
+rb6<-(ratio_matix(m,1)+ratio_matix(m,2)+ratio_matix(m,3)+ratio_matix(m,4)+ratio_matix(m,5)+ratio_matix(m,6)+ratio_matix(m,7)+ratio_matix(m,8)+ratio_matix(m,9)+ratio_matix(m,10)+ratio_matix(m,11)+ratio_matix(m,12)+ratio_matix(m,13))/13
+rbtbr<-(ratio_matix(m,14)+ratio_matix(m,15)+ratio_matix(m,16)+ratio_matix(m,17)+ratio_matix(m,18)+ratio_matix(m,19)+ratio_matix(m,20)+ratio_matix(m,21)+ratio_matix(m,22)+ratio_matix(m,23)+ratio_matix(m,24))/11
+rlean<-(ratio_matix(m,1)+ratio_matix(m,2)+ratio_matix(m,3)+ratio_matix(m,4)+ratio_matix(m,5)+ratio_matix(m,6)+ratio_matix(m,7)+ratio_matix(m,14)+ratio_matix(m,15)+ratio_matix(m,16)+ratio_matix(m,17)+ratio_matix(m,18))/12
+robes<-(ratio_matix(m,8)+ratio_matix(m,9)+ratio_matix(m,10)+ratio_matix(m,11)+ratio_matix(m,12)+ratio_matix(m,13)+ratio_matix(m,19)+ratio_matix(m,20)+ratio_matix(m,21)+ratio_matix(m,22)+ratio_matix(m,23)+ratio_matix(m,24))/12
+
 
 allm<-round(cor(all),4)
 b6m<-round(cor(b6),4)

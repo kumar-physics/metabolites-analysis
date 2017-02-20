@@ -1,0 +1,47 @@
+---
+title: "Mean values"
+output: html_document
+---
+
+### Mean value of matrices
+
+```{r, fig.width=10, fig.height=8, eval=TRUE, echo=FALSE,message=FALSE, warning=FALSE}
+rd1<-matrix_mean(rb6l,"B6 Lean")
+rd2<-matrix_mean(rb6o,"B6 Obesity")
+rd3<-matrix_mean(rbtbrl,"BTBR Lean")
+rd4<-matrix_mean(rbtbro,"BTBR Obesity")
+rd5<-matrix_mean(rb6,"B6")
+rd6<-matrix_mean(rbtbr,"BTBR")
+rd7<-matrix_mean(rlean,"Lean")
+rd8<-matrix_mean(robes,"Obesity")
+rd<-rbind(rbind(rbind(rbind(rbind(rbind(rbind(rd1,rd2),rd3),rd4),rd5),rd6),rd7),rd8)
+plt<-ggplot(rd,aes(x=metabolites,y=mean))+
+  geom_point(aes(color=dataset))+#geom_errorbar(aes(ymin=mean-sd,ymax=mean+sd,color=dataset))+
+  #geom_line(aes(group=dataset))+
+  ggplot2::theme(axis.text.x = element_text(angle = 90, hjust = 1,vjust = 0.5))
+plt1<-plotly::ggplotly(plt)
+plt1  
+```
+
+
+### Mean values of difference matrices
+
+```{r, fig.width=10, fig.height=8, eval=TRUE, echo=FALSE,message=FALSE, warning=FALSE}
+
+rdf1<-matrix_mean(rb6l-rb6o,"B6 Lean vs B6 Obesity")
+rdf2<-matrix_mean(rbtbrl-rbtbro,"BTBR Lean vs BTBR Obesity")
+rdf3<-matrix_mean(rb6l-rbtbrl,"B6 Lean vs BTBR Lean")
+rdf4<-matrix_mean(rb6-rbtbr,"B6 vs BTBR")
+rdf5<-matrix_mean(rlean-robes,"Lean vs Obesity")
+rdf6<-matrix_mean(rb6o-rbtbro,"B6 Obes vs BTBR Obes")
+rdf<-rbind(rbind(rbind(rbind(rbind(rdf1,rdf2),rdf3),rdf4),rdf5),rdf6)
+plt<-ggplot(rdf,aes(x=metabolites,y=mean))+
+  geom_point(aes(color=dataset))+#geom_errorbar(aes(ymin=mean-sd,ymax=mean+sd,color=dataset))+
+  #geom_line(aes(group=dataset))+
+  ggplot2::theme(axis.text.x = element_text(angle = 90, hjust = 1,vjust = 0.5))
+plt1<-plotly::ggplotly(plt)
+plt1         
+
+
+```
+

@@ -1,0 +1,57 @@
+---
+title: "Logit Method"
+output: html_document
+---
+
+## Logit method
+In this method each matrix is constructed by taking log of pairwise ratio of each metabolite.
+
+### B6 Lean
+
+```{r, fig.width=10, fig.height=8, eval=TRUE, echo=FALSE,message=FALSE, warning=FALSE}
+plt_matrix(rb6l)
+```
+
+### B6 Obesity
+
+```{r, fig.width=10, fig.height=8, eval=TRUE, echo=FALSE,message=FALSE, warning=FALSE}
+plt_matrix(rb6o)
+```
+
+### BTBR Lean
+
+```{r, fig.width=10, fig.height=8, eval=TRUE, echo=FALSE,message=FALSE, warning=FALSE}
+plt_matrix(rbtbrl)
+```
+
+### BTBR Obesity
+
+```{r, fig.width=10, fig.height=8, eval=TRUE, echo=FALSE,message=FALSE, warning=FALSE}
+plt_matrix(rbtbro)
+```
+
+### B6 
+
+```{r, fig.width=10, fig.height=8, eval=TRUE, echo=FALSE,message=FALSE, warning=FALSE}
+plt_matrix(rb6)
+```
+
+### BTBR
+
+```{r, fig.width=10, fig.height=8, eval=TRUE, echo=FALSE,message=FALSE, warning=FALSE}
+plt_matrix(rbtbr)
+```
+
+### Lean
+
+```{r, fig.width=10, fig.height=8, eval=TRUE, echo=FALSE,message=FALSE, warning=FALSE}
+plt_matrix(rlean)
+```
+
+### Obesity
+
+```{r, fig.width=10, fig.height=8, eval=TRUE, echo=FALSE,message=FALSE, warning=FALSE}
+plt_matrix(robes)
+```
+
+

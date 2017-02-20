@@ -1,0 +1,41 @@
+---
+title: "Difference Matrix"
+output: html_document
+---
+
+### B6 Lean vs B6 Obesity
+
+```{r, fig.width=10, fig.height=8, eval=TRUE, echo=FALSE,message=FALSE, warning=FALSE}
+plt_matrix(rb6l-rb6o)
+```
+
+### BTBR Lean vs BTBR Obesity
+
+```{r, fig.width=10, fig.height=8, eval=TRUE, echo=FALSE,message=FALSE, warning=FALSE}
+plt_matrix(rbtbrl-rbtbro)
+```
+
+### B6 Lean vs BTBR Lean
+
+```{r, fig.width=10, fig.height=8, eval=TRUE, echo=FALSE,message=FALSE, warning=FALSE}
+plt_matrix(rb6l-rbtbrl)
+```
+
+### B6 Obesity vs BTBR Obesity
+
+```{r, fig.width=10, fig.height=8, eval=TRUE, echo=FALSE,message=FALSE, warning=FALSE}
+plt_matrix(rb6o-rbtbro)
+```
+
+### Lean vs Obesity
+
+```{r, fig.width=10, fig.height=8, eval=TRUE, echo=FALSE,message=FALSE, warning=FALSE}
+plt_matrix(rlean-robes)
+```
+
+### B6 vs BTBR
+
+```{r, fig.width=10, fig.height=8, eval=TRUE, echo=FALSE,message=FALSE, warning=FALSE}
+plt_matrix(rb6-rbtbr)
+```
+

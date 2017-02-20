@@ -55,3 +55,11 @@ navbar:
           href: b6obvsbtbrob.html
     - text: "Results"
       href: results.html
+    - text: "Logit method"
+      href: logit.html
+    - text: "Logti results"
+      menu:
+        - text: "Difference matrices"
+          href: diffmat.html
+        - text: "Results"
+          href: logit_result.html
